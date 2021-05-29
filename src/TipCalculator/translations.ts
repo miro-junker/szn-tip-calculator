@@ -4,6 +4,11 @@ const translations = {
   satisfaction: 'Staff quality',
   peopleCount: 'Persons involved',
   submit: 'Calculate',
+  option: {
+    '2': 'Bad',
+    '10': 'Good',
+    '15': 'Perfect, I am very pleased'
+  }
 }
 
 

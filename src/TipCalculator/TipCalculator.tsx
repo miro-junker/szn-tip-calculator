@@ -30,14 +30,17 @@ const TipCalculator: React.FC = () => {
 
           <h3>{t.satisfaction}</h3>
 
-          {satisfactionOptions.map((option) => {
-            return (
-              <div key={option.name}>
-                <input type='radio' name='satisfaction' id={option.name} />
-                <label htmlFor={option.name}>{option.label}</label>
-              </div>
-            );
-          })}
+          {satisfactionOptions.map((option) => (
+            <div key={option.value}>
+              <input
+                type='radio'
+                name='satisfaction'
+                value={option.value}
+                id={`option-${option.value}`}
+              />
+              <label htmlFor={`option-${option.value}`}>{option.label}</label>
+            </div>
+          ))}
 
           <h3>{t.peopleCount}</h3>
           <input type='number' />

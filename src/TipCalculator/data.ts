@@ -1,23 +1,21 @@
+import t from './translations';
+
 interface TSatisfactionOption {
-  name: string;
-  label: string;
   value: number;
+  label: string;
 }
 
 export const satisfactionOptions: TSatisfactionOption[] = [
   {
-    'name': 'low',
-    'label': 'Bad',
     'value': 2,
+    'label': t.option[2],
   },
   {
-    'name': 'mid',
-    'label': 'Good',
     'value': 10,
+    'label': t.option[10],
   },
   {
-    'name': 'high',
-    'label': "Perfect, I'm very pleased",
     'value': 15,
+    'label': t.option[15],
   },
 ];
