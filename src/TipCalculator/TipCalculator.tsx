@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './TipCalculator.module.scss';
 import { satisfactionOptions } from './data'
 import t from './translations'
 
+interface IUpdateCommit {
+  bill?: number;
+}
+
 const TipCalculator: React.FC = () => {
+  const [state, setState] = useState({
+    bill: 0,
+    validInput: false,
+  });
+
+  const updateState = (change: IUpdateCommit) => {
+    setState({...state, ...change })
+  }
+
   return (
     <div className={styles.root}>
       <h1>{t.title}</h1>
@@ -11,7 +24,9 @@ const TipCalculator: React.FC = () => {
       <form>
         <fieldset>
           <h3>{t.bill}</h3>
-          <input type='number' />
+          <input type='number' value={state.bill} onChange={(ev) => {
+            updateState({bill: Number(ev.target.value)})
+          }} />
 
           <h3>{t.satisfaction}</h3>
 
