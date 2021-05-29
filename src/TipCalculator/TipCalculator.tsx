@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TipCalculator.module.css';
+import styles from './TipCalculator.module.scss';
 
 const TipCalculator: React.FC = () => {
   return (
