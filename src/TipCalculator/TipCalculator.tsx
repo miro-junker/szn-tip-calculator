@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './TipCalculator.module.scss';
+import { satisfactionOptions } from './data'
+
 
 const TipCalculator: React.FC = () => {
   return (
@@ -11,12 +13,15 @@ const TipCalculator: React.FC = () => {
         <input type="number" />
 
         <h3>Staff quality</h3>
-        <input type="radio" name="satisfaction" id="bad" />
-        <label htmlFor="bad">Bad</label>
-        <input type="radio" name="satisfaction" id="good" />
-        <label htmlFor="good">Good</label>
-        <input type="radio" name="satisfaction" id="perfect" />
-        <label htmlFor="perfect">Perfect</label>
+
+        {satisfactionOptions.map((option) => {
+          return (
+            <div key={option.name}>
+              <input type="radio" name="satisfaction" id={option.name} />
+              <label htmlFor={option.name}>{option.label}</label>
+            </div>
+          );
+        })}
 
         <h3>People involved</h3>
         <input type="number" />
