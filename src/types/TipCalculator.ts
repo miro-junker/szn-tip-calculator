@@ -4,6 +4,12 @@ export interface IUserInput {
   tipPercent: number | null;
 }
 
+export interface IValidUserInput {
+  bill: number;
+  peopleCount: number;
+  tipPercent: number;
+}
+
 export interface IUserInputUpdate {
   bill?: number;
   peopleCount?: number;

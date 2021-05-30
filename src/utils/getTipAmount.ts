@@ -1,12 +1,8 @@
-import { IUserInput } from '../types/TipCalculator'
+import { IValidUserInput } from '../types/TipCalculator'
 import { ceilNumber } from '.' 
 import { ADDITIONAL_PERSON_TIP, ROUND_PRECISION } from '../config'
 
-const getTipAmount = (input: IUserInput) => {
-  if (!input.tipPercent) {
-    return null;
-  }
-
+const getTipAmount = (input: IValidUserInput) => {
   // Calculate user-selected tip
   const baseTip = (input.tipPercent / 100) * input.bill;
 

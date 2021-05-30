@@ -1,6 +1,6 @@
-import { IUserInput } from '../types/TipCalculator';
+import { IUserInput, IValidUserInput } from '../types/TipCalculator';
 
-const isUserInputValid = (input: IUserInput): boolean => {
+const isUserInputValid = (input: IUserInput): input is IValidUserInput => {
   if (input.tipPercent === null) {
     return false;
   }
