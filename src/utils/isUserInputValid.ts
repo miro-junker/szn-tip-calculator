@@ -9,7 +9,7 @@ const isUserInputValid = (input: IUserInput): input is IValidUserInput => {
     return false;
   }
 
-  if (!Number.isInteger(input.peopleCount) || input.peopleCount < 1 ) {
+  if (!Number.isInteger(input.consumers) || input.consumers < 1 ) {
     return false;
   }
 

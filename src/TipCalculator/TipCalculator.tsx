@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { IState, IUserInputUpdate } from '../types/TipCalculator';
-import { isUserInputValid, getTipAmount } from '../utils';
+import { isUserInputValid, getTipAmount, createResult } from '../utils';
 import t from '../translations';
 import { satisfactionOptions, calcSettings, CURRENCY } from '../config';
 import Result from '../Result/Result';
@@ -10,20 +10,23 @@ const TipCalculator: React.FC = () => {
   const [state, setState] = useState<IState>({
     userInput: {
       bill: 0,
-      peopleCount: 1,
+      consumers: 1,
       tipPercent: null,
     },
-    calculatedTip: null,
+    result: null,
   });
 
   const changeUserInput = (commit: IUserInputUpdate) => {
     const userInput = {...state.userInput, ...commit};
 
-    const calculatedTip = isUserInputValid(userInput)
-        ? getTipAmount(userInput, calcSettings)
-        : null;
+    const result = !isUserInputValid(userInput) ? null : createResult(
+      userInput.bill,
+      userInput.consumers,
+      getTipAmount(userInput, calcSettings),
+      CURRENCY,
+    );
 
-    setState({...state, userInput, calculatedTip})
+    setState({...state, userInput, result})
   }
 
   return (
@@ -55,12 +58,12 @@ const TipCalculator: React.FC = () => {
             </div>
           ))}
 
-          <h3>{t.peopleCount}</h3>
+          <h3>{t.consumers}</h3>
           <input
             type='number'
-            value={state.userInput.peopleCount}
+            value={state.userInput.consumers}
             onChange={(ev) => {
-              changeUserInput({peopleCount: Number(ev.target.value)})
+              changeUserInput({consumers: Number(ev.target.value)})
             }}
           />
         </fieldset>
@@ -70,8 +73,8 @@ const TipCalculator: React.FC = () => {
         </button>
       </form>
 
-      {state.calculatedTip && (
-        <Result bill={state.userInput.bill} tip={state.calculatedTip} currency={CURRENCY} />
+      {state.result && (
+        <Result {...state.result} />
       )}
 
     </div>

@@ -1,18 +1,17 @@
 import React from 'react'
-import { IResult } from '../types/TipCalculator';
-import { getPriceWithCurrency } from '../utils';
+import { IResult } from '../types/Result';
 import t from '../translations';
 
-
-const Result: React.FC<IResult> = (props) => {
-  const totalPrice = props.bill + props.tip;
-
-  return (
-    <div>
-      <p>{`${t.recommendedTip}: ${getPriceWithCurrency(props.tip, props.currency)}`}</p>
-      <h2>{`${t.totalPrice}: ${getPriceWithCurrency(totalPrice, props.currency)}`}</h2>
-    </div>
-  )
-}
+const Result: React.FC<IResult> = ({
+  consumerPrice,
+  tip,
+  totalPrice,
+}) => (
+  <div>
+    <p>{`${t.tip}: ${tip}`}</p>
+    <h2>{`${t.totalPrice}: ${totalPrice}`}</h2>
+    <p>{`${t.consumerPrice}: ${consumerPrice}`}</p>
+  </div>
+)
 
 export default Result
