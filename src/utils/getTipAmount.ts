@@ -9,11 +9,16 @@ const getTipAmount = (input: IValidUserInput, settings: ICalcSettings) => {
   const extraPersonsTip = (input.consumers - 1) * settings.ADDITIONAL_PERSON_TIP;
 
   const precisePayout = input.bill + baseTip + extraPersonsTip;
+  
+  // Calculate total price per consumer and round it
+  const consumerPrice = ceilNumber(
+    (precisePayout / input.consumers),
+    settings.ROUND_PRECISION
+  );
 
-  // Round-up result
-  const roundedPayout = ceilNumber(precisePayout, settings.ROUND_PRECISION);
+  const totalPrice = consumerPrice * input.consumers;
 
-  return roundedPayout - input.bill;
+  return totalPrice - input.bill;
 }
 
 export default getTipAmount
