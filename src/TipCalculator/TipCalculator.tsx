@@ -1,35 +1,29 @@
 import React, {useState} from 'react';
+import { IState, IUserInputUpdate } from '../types/TipCalculator';
+import { isUserInputValid, getTipAmount } from '../utils';
+import t from '../translations';
+import { satisfactionOptions } from '../config';
+import Result from '../Result/Result';
 import styles from './TipCalculator.module.scss';
-import { satisfactionOptions } from './data'
-import t from './translations'
-import Result from './Result'
-
-interface IState {
-  bill: number;
-  peopleCount: number;
-  satisfaction: number;
-  validInput: boolean;
-  calculatedTip: number | null;
-}
-interface IUserInputUpdate {
-  bill?: number;
-  peopleCount?: number;
-  satisfaction?: number;
-}
-
-const DEFAULT_SATISFACTION = 10;
 
 const TipCalculator: React.FC = () => {
   const [state, setState] = useState<IState>({
-    bill: 0,
-    peopleCount: 1,
-    satisfaction: DEFAULT_SATISFACTION,
-    validInput: false,
+    userInput: {
+      bill: 0,
+      peopleCount: 1,
+      tipPercent: null,
+    },
     calculatedTip: null,
   });
 
-  const changeUserInput = (input: IUserInputUpdate) => {
-    setState({...state, ...input})
+  const changeUserInput = (commit: IUserInputUpdate) => {
+    const userInput = {...state.userInput, ...commit};
+
+    const calculatedTip = isUserInputValid(userInput)
+        ? getTipAmount(userInput)
+        : null;
+
+    setState({...state, userInput, calculatedTip})
   }
 
   return (
@@ -39,7 +33,7 @@ const TipCalculator: React.FC = () => {
       <form>
         <fieldset>
           <h3>{t.bill}</h3>
-          <input type='number' value={state.bill} onChange={(ev) => {
+          <input type='number' value={state.userInput.bill} onChange={(ev) => {
             changeUserInput({bill: Number(ev.target.value)})
           }} />
 
@@ -52,9 +46,9 @@ const TipCalculator: React.FC = () => {
                 name='satisfaction'
                 value={option.value}
                 id={`option-${option.value}`}
-                checked={state.satisfaction === option.value}
+                checked={state.userInput.tipPercent === option.value}
                 onChange={(ev) => {
-                  changeUserInput({satisfaction: Number(ev.target.value)})
+                  changeUserInput({tipPercent: Number(ev.target.value)})
                 }}
               />
               <label htmlFor={`option-${option.value}`}>{option.label}</label>
@@ -62,9 +56,13 @@ const TipCalculator: React.FC = () => {
           ))}
 
           <h3>{t.peopleCount}</h3>
-          <input type='number' value={state.peopleCount} onChange={(ev) => {
-            changeUserInput({peopleCount: Number(ev.target.value)})
-          }} />
+          <input
+            type='number'
+            value={state.userInput.peopleCount}
+            onChange={(ev) => {
+              changeUserInput({peopleCount: Number(ev.target.value)})
+            }}
+          />
         </fieldset>
 
         <button type='submit'>
@@ -72,7 +70,9 @@ const TipCalculator: React.FC = () => {
         </button>
       </form>
 
-      {state.calculatedTip && (<Result totalPrice={456} tip={123} />)}
+      {state.calculatedTip && (
+        <Result bill={state.userInput.bill} tip={state.calculatedTip} />
+      )}
 
     </div>
   );

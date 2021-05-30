@@ -1,9 +1,8 @@
 import t from './translations';
+import { TSatisfactionOption } from './types/TipCalculator'
 
-interface TSatisfactionOption {
-  value: number;
-  label: string;
-}
+export const ADDITIONAL_PERSON_TIP = 10;
+export const ROUND_PRECISION = 10;
 
 export const satisfactionOptions: TSatisfactionOption[] = [
   {

@@ -1,14 +1,11 @@
 import React from 'react'
+import { IResult } from '../types/TipCalculator';
 
-interface IResult {
-  tip: number;
-  totalPrice: number;
-}
 
 const Result: React.FC<IResult> = (props) => (
   <div>
     <p>Recommended tip: {props.tip}</p>
-    <h2>Total price: {props.totalPrice}</h2>
+    <h2>Total price: {props.bill + props.tip}</h2>
   </div>
 )
 
