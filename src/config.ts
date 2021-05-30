@@ -4,7 +4,7 @@ import { TSatisfactionOption } from './types/TipCalculator'
 export const CURRENCY = 'CZK';
 
 export const calcSettings = {
-  ADDITIONAL_PERSON_TIP: 4,
+  ADDITIONAL_PERSON_TIP: 3,
   ROUND_PRECISION: 10,
 }
 

@@ -3,6 +3,7 @@ import { IState, IUserInputUpdate } from '../types/TipCalculator';
 import { isUserInputValid, getTipAmount, createResult } from '../utils';
 import t from '../translations';
 import { satisfactionOptions, calcSettings, CURRENCY } from '../config';
+import ConsumersSelector from '../ConsumersSelector/ConsumersSelector';
 import Result from '../Result/Result';
 import styles from './TipCalculator.module.scss';
 
@@ -59,18 +60,19 @@ const TipCalculator: React.FC = () => {
           ))}
 
           <h3>{t.consumers}</h3>
-          <input
-            type='number'
+          <ConsumersSelector
             value={state.userInput.consumers}
-            onChange={(ev) => {
-              changeUserInput({consumers: Number(ev.target.value)})
+            updateValueCb={(updatedValue: number) => {
+              changeUserInput({consumers: updatedValue})
             }}
           />
         </fieldset>
 
-        <button type='submit'>
-          {t.submit}
-        </button>
+        {!state.result && (
+          <button type='submit'>
+            {t.submit}
+          </button>
+        )}
       </form>
 
       {state.result && (
