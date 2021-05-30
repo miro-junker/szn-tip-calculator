@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { IState, IUserInputUpdate } from '../types/TipCalculator';
 import { isUserInputValid, getTipAmount } from '../utils';
 import t from '../translations';
-import { satisfactionOptions } from '../config';
+import { satisfactionOptions, calcSettings, CURRENCY } from '../config';
 import Result from '../Result/Result';
 import styles from './TipCalculator.module.scss';
 
@@ -20,7 +20,7 @@ const TipCalculator: React.FC = () => {
     const userInput = {...state.userInput, ...commit};
 
     const calculatedTip = isUserInputValid(userInput)
-        ? getTipAmount(userInput)
+        ? getTipAmount(userInput, calcSettings)
         : null;
 
     setState({...state, userInput, calculatedTip})
@@ -71,7 +71,7 @@ const TipCalculator: React.FC = () => {
       </form>
 
       {state.calculatedTip && (
-        <Result bill={state.userInput.bill} tip={state.calculatedTip} />
+        <Result bill={state.userInput.bill} tip={state.calculatedTip} currency={CURRENCY} />
       )}
 
     </div>

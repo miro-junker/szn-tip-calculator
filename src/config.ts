@@ -1,8 +1,12 @@
 import t from './translations';
 import { TSatisfactionOption } from './types/TipCalculator'
 
-export const ADDITIONAL_PERSON_TIP = 10;
-export const ROUND_PRECISION = 10;
+export const CURRENCY = 'CZK';
+
+export const calcSettings = {
+  ADDITIONAL_PERSON_TIP: 10,
+  ROUND_PRECISION: 10,
+}
 
 export const satisfactionOptions: TSatisfactionOption[] = [
   {

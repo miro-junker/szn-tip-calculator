@@ -24,9 +24,15 @@ export interface IState {
 export interface IResult {
   bill: number;
   tip: number;
+  currency: string;
 }
 
 export interface TSatisfactionOption {
   value: number;
   label: string;
+}
+
+export interface ICalcSettings {
+  ADDITIONAL_PERSON_TIP: number;
+  ROUND_PRECISION: number;
 }

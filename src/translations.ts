@@ -8,7 +8,9 @@ const translations = {
     '2': 'Bad',
     '10': 'Good',
     '15': 'Perfect, I am very pleased'
-  }
+  },
+  recommendedTip: 'Recommended tip',
+  totalPrice: 'Total price',
 }
 
 
