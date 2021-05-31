@@ -11,7 +11,7 @@ const translations = {
   },
   tip: 'Recommended tip',
   totalPrice: 'Total price',
-  consumerPrice: 'Per consumer',
+  consumerPrice: 'per consumer',
   invalidBillInput: 'Bill price must be filled in',
 }
 
