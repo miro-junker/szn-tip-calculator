@@ -1,6 +1,7 @@
 import React from 'react'
 import { IResult } from '../../types';
 import t from '../../translations';
+import styles from './Result.module.scss';
 
 const Result: React.FC<IResult> = ({
   consumerPrice,
@@ -11,10 +12,17 @@ const Result: React.FC<IResult> = ({
   const overpayPercent = Math.round((overpayRatio - 1) * 100);
 
   return (
-    <div>
-      <p>{`${t.tip}: ${tip} (+ ${overpayPercent} %)`}</p>
-      <h2>{`${t.totalPrice}: ${totalPrice}`}</h2>
-      <p>{`${t.consumerPrice}: ${consumerPrice}`}</p>
+    <div className={styles.root}>
+      <h2 className={styles.total}>
+        {`${t.totalPrice}: ${totalPrice}`}
+      </h2>
+
+      <p>{t.tip}: {tip} {`(+ ${overpayPercent} %)`}</p>
+
+      <div className={styles.consumer}>
+        <h3>{consumerPrice}</h3>
+        <p>{t.consumerPrice}</p>
+      </div>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import t from '../../translations';
 import styles from './TipCalculator.module.scss';
 
 import {TBill, TConsumers, TSatisfaction, IState, IUserInputUpdate} from '../../types';
-import {ConsumersSelector, BillInput, SatisfactionSelector, Result} from '../';
+import {Button, ConsumersSelector, BillInput, SatisfactionSelector, Result} from '../';
 
 const TipCalculator: React.FC = () => {
   const [state, setState] = useState<IState>({
@@ -37,43 +37,47 @@ const TipCalculator: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <h1>{t.title}</h1>
+      <h1 className={styles.title}>{t.title}</h1>
 
       <form onSubmit={(ev) => {ev.preventDefault(); submit();}}>
-        <fieldset>
-          <h3>{t.bill}</h3>
-          <BillInput
-            value={state.userInput.bill}
-            updateValueCb={(updatedValue: TBill) => {
-              changeUserInput({bill: updatedValue})
-            }}
-          />
+        <div className={styles.layout}>
+          <div className={styles.main}>
+            <h3 className={styles.subheading}>{t.bill}</h3>
+            <BillInput
+              value={state.userInput.bill}
+              updateValueCb={(updatedValue: TBill) => {
+                changeUserInput({bill: updatedValue})
+              }}
+            />
 
-          <h3>{t.satisfaction}</h3>
-          <SatisfactionSelector
-            value={state.userInput.tipPercent}
-            satisfactionOptions={satisfactionOptions}
-            updateValueCb={(updatedValue: TSatisfaction) => {
-              changeUserInput({tipPercent: updatedValue})
-            }}
-          />
+            <h3 className={styles.subheading}>{t.satisfaction}</h3>
+            <SatisfactionSelector
+              value={state.userInput.tipPercent}
+              satisfactionOptions={satisfactionOptions}
+              updateValueCb={(updatedValue: TSatisfaction) => {
+                changeUserInput({tipPercent: updatedValue})
+              }}
+            />
 
-          <h3>{t.consumers}</h3>
-          <ConsumersSelector
-            value={state.userInput.consumers}
-            updateValueCb={(updatedValue: TConsumers) => {
-              changeUserInput({consumers: updatedValue})
-            }}
-          />
-        </fieldset>
+            <h3 className={styles.subheading}>{t.consumers}</h3>
+            <ConsumersSelector
+              value={state.userInput.consumers}
+              updateValueCb={(updatedValue: TConsumers) => {
+                changeUserInput({consumers: updatedValue})
+              }}
+            />
+          </div>
 
-        {!state.result && <button type='submit'>{t.submit}</button>}
+          <div className={styles.result}>
+            {!state.result && <Button type='submit'>{t.submit}</Button>}
+
+            {state.result && (
+              <Result {...state.result} />
+            )}
+          </div>
+        </div>
+
       </form>
-
-      {state.result && (
-        <Result {...state.result} />
-      )}
-
     </div>
   );
 }

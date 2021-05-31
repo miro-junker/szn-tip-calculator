@@ -1,5 +1,6 @@
 import React from 'react';
 import { TConsumers } from '../../types';
+import { Button } from '../';
 import styles from './ConsumersSelector.module.scss';
 
 interface IConsumersSelector {
@@ -10,7 +11,7 @@ interface IConsumersSelector {
 const ConsumersSelector: React.FC<IConsumersSelector> = (props) => {
   return (
     <div className={styles.root}>
-      <button
+      <Button
         disabled={props.value <= 1}
         onClick={(ev) => {
           ev.preventDefault();
@@ -18,20 +19,20 @@ const ConsumersSelector: React.FC<IConsumersSelector> = (props) => {
         }}
       >
         -
-      </button>
+      </Button>
 
       <span className={styles.value}>
         {props.value}
       </span>
 
-      <button
+      <Button
         onClick={(ev) => {
           ev.preventDefault();
           props.updateValueCb(props.value + 1)
         }}
       >
         +
-      </button>
+      </Button>
     </div>
   )
 }

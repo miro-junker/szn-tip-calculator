@@ -3,5 +3,12 @@
 }
 
 .value {
-  
+  display: inline-flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1.3em;
+  color: #b9b9b9;
+  min-width: 3em;
+  align-items: center;
+  justify-content: center;
 }
