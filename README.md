@@ -18,7 +18,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 
-### Zadání
+# Zadání
 
 V Javascriptu (ES2015+), nejlépe za pomocí frameworku React, vyrobte jednoduché uživatelské rozhraní
 pro výpočet dýška. Uživatelské rozhraní se bude skládat z hlavního okna, ve kterém budou 3 vstupní
@@ -34,10 +34,10 @@ dalšího člověka, který se na účtu podílí pak připočtěte konstantní 
 výslednou hodnotu zaokrouhlete na desítky nahoru. Podoba formuláře, výpočet a styl zápisu kódu je
 čistě na Vás.
 
-# Příklad vstupu #1
+### Příklad vstupu #1
 - Částka na účtu: 500, Obsluha: Dobrá, Počet lidí: 2 (Za každého člověka navíc: 10)
 - Výstup: 560
 
-# Příklad vstupu #2
+### Příklad vstupu #2
 - Částka na účtu: 340, Oblusha: Špatná, Počet lidí: 1 (Za každého člověka navíc: 10)
 - Výstup: 350
