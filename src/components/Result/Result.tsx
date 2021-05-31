@@ -1,6 +1,6 @@
 import React from 'react'
-import { IResult } from '../types/Result';
-import t from '../translations';
+import { IResult } from '../../types';
+import t from '../../translations';
 
 const Result: React.FC<IResult> = ({
   consumerPrice,

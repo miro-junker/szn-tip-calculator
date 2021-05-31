@@ -1,35 +1,33 @@
 import React from 'react';
+import { TConsumers } from '../../types';
 import styles from './ConsumersSelector.module.scss';
 
 interface IConsumersSelector {
-  value: number;
-  updateValueCb: (updatedValue: number) => void;
+  value: TConsumers;
+  updateValueCb: (updatedValue: TConsumers) => void;
 }
 
-const ConsumersSelector: React.FC<IConsumersSelector> = ({
-  value,
-  updateValueCb
-}) => {
+const ConsumersSelector: React.FC<IConsumersSelector> = (props) => {
   return (
     <div className={styles.root}>
       <button
-        disabled={value <= 1}
+        disabled={props.value <= 1}
         onClick={(ev) => {
           ev.preventDefault();
-          updateValueCb(value - 1)
+          props.updateValueCb(props.value - 1)
         }}
       >
         -
       </button>
 
       <span className={styles.value}>
-        {value}
+        {props.value}
       </span>
 
       <button
         onClick={(ev) => {
           ev.preventDefault();
-          updateValueCb(value + 1)
+          props.updateValueCb(props.value + 1)
         }}
       >
         +

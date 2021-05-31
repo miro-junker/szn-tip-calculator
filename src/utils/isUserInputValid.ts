@@ -1,19 +1,23 @@
-import { IUserInput, IValidUserInput } from '../types/TipCalculator';
+import { IUserInput, IValidUserInput } from '../types';
+
+export const isBillValid = (bill: number) => {
+  return bill > 0;
+}
+
+export const isSatisfactionValid = (satisfaction: number | null) => {
+  return satisfaction !== null;
+}
+
+export const isConsumersValid = (consumers: number) => {
+  return Number.isInteger(consumers) && consumers >= 1;
+}
 
 const isUserInputValid = (input: IUserInput): input is IValidUserInput => {
-  if (input.tipPercent === null) {
-    return false;
-  }
-
-  if (input.bill <= 0) {
-    return false;
-  }
-
-  if (!Number.isInteger(input.consumers) || input.consumers < 1 ) {
-    return false;
-  }
-
-  return true;
+  return (
+    isBillValid(input.bill) &&
+    isSatisfactionValid(input.tipPercent) &&
+    isConsumersValid(input.consumers)
+  )
 }
 
 export default isUserInputValid

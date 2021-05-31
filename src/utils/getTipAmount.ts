@@ -1,7 +1,7 @@
-import { IValidUserInput, ICalcSettings } from '../types/TipCalculator'
+import { IValidUserInput, TCalcSettings } from '../types'
 import { ceilNumber } from '.' 
 
-const getTipAmount = (input: IValidUserInput, settings: ICalcSettings) => {
+const getTipAmount = (input: IValidUserInput, settings: TCalcSettings): number => {
   // Calculate user-selected tip
   const baseTip = (input.tipPercent / 100) * input.bill;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import TipCalculator from './TipCalculator/TipCalculator';
+import { TipCalculator } from './components';
 
 function App() {
   return (

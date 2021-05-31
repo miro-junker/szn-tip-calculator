@@ -1,4 +1,4 @@
-const getPriceWithCurrency = (price: number, currency: string) => {
+const getPriceWithCurrency = (price: number, currency: string): string => {
   return `${price} ${currency}`
 }
 

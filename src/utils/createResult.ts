@@ -1,9 +1,9 @@
-import { IResult } from '../types/Result';
+import { TBill, TConsumers, IResult } from '../types';
 import { getPriceWithCurrency } from '.';
 
 const createResult = (
-  bill: number,
-  consumers: number,
+  bill: TBill,
+  consumers: TConsumers,
   tip: number,
   currency: string
 ): IResult => {

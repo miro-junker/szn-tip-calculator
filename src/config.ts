@@ -1,9 +1,9 @@
 import t from './translations';
-import { TSatisfactionOption } from './types/TipCalculator'
+import { TSatisfactionOption, TCalcSettings } from './types'
 
 export const CURRENCY = 'CZK';
 
-export const calcSettings = {
+export const calcSettings: TCalcSettings = {
   ADDITIONAL_PERSON_MIN_TIP: 2,
   ROUND_PRECISION: 10,
 }
