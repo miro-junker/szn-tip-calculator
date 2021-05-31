@@ -1,5 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .total {
   margin-top: 0;
+  flex-grow: 1;
 }
 
 .consumer {

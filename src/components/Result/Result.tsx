@@ -13,11 +13,10 @@ const Result: React.FC<IResult> = ({
 
   return (
     <div className={styles.root}>
-      <h2 className={styles.total}>
-        {`${t.totalPrice}: ${totalPrice}`}
-      </h2>
-
-      <p>{t.tip}: {tip} {`(+ ${overpayPercent} %)`}</p>
+      <div>
+        <h2 className={styles.total}>{`${t.totalPrice}: ${totalPrice}`}</h2>
+        <p>{t.tip}: {tip} {`(+ ${overpayPercent} %)`}</p>
+      </div>
 
       <div className={styles.consumer}>
         <h3>{consumerPrice}</h3>

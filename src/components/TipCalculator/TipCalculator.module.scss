@@ -46,6 +46,7 @@ $space-inner: 2rem;
   flex: 4;
   border-top: $border;
   padding-top: $space-inner;
+  display: flex;
 }
 
 @media (min-width: 600px) {
