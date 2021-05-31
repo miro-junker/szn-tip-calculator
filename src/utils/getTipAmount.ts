@@ -5,8 +5,9 @@ const getTipAmount = (input: IValidUserInput, settings: ICalcSettings) => {
   // Calculate user-selected tip
   const baseTip = (input.tipPercent / 100) * input.bill;
 
-  // Calculate additional tip for every extra person 
-  const extraPersonsTip = (input.consumers - 1) * settings.ADDITIONAL_PERSON_TIP;
+  // Calculate minimal additional tip for every extra person 
+  const extraPersonsTip = (input.consumers - 1) *
+    settings.ADDITIONAL_PERSON_MIN_TIP;
 
   const precisePayout = input.bill + baseTip + extraPersonsTip;
   

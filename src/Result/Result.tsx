@@ -4,14 +4,19 @@ import t from '../translations';
 
 const Result: React.FC<IResult> = ({
   consumerPrice,
+  overpayRatio,
   tip,
   totalPrice,
-}) => (
-  <div>
-    <p>{`${t.tip}: ${tip}`}</p>
-    <h2>{`${t.totalPrice}: ${totalPrice}`}</h2>
-    <p>{`${t.consumerPrice}: ${consumerPrice}`}</p>
-  </div>
-)
+}) => {
+  const overpayPercent = Math.round((overpayRatio - 1) * 100);
+
+  return (
+    <div>
+      <p>{`${t.tip}: ${tip} (+ ${overpayPercent} %)`}</p>
+      <h2>{`${t.totalPrice}: ${totalPrice}`}</h2>
+      <p>{`${t.consumerPrice}: ${consumerPrice}`}</p>
+    </div>
+  )
+}
 
 export default Result

@@ -12,6 +12,7 @@ const createResult = (
   return {
     consumerPrice: getPriceWithCurrency((totalPrice / consumers), currency),
     tip: getPriceWithCurrency(tip, currency),
+    overpayRatio: totalPrice / bill,
     totalPrice: getPriceWithCurrency(totalPrice, currency),
   }
 }

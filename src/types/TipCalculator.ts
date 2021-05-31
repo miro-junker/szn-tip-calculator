@@ -29,6 +29,6 @@ export interface TSatisfactionOption {
 }
 
 export interface ICalcSettings {
-  ADDITIONAL_PERSON_TIP: number;
+  ADDITIONAL_PERSON_MIN_TIP: number;
   ROUND_PRECISION: number;
 }
