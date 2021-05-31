@@ -37,9 +37,14 @@ const TipCalculator: React.FC = () => {
       <form>
         <fieldset>
           <h3>{t.bill}</h3>
-          <input type='number' value={state.userInput.bill} onChange={(ev) => {
-            changeUserInput({bill: Number(ev.target.value)})
-          }} />
+          <input
+            type='number'
+            min='0'
+            value={state.userInput.bill}
+            onChange={(ev) => {
+              changeUserInput({bill: Number(ev.target.value)})
+            }}
+          />
 
           <h3>{t.satisfaction}</h3>
 

@@ -5,7 +5,7 @@ const isUserInputValid = (input: IUserInput): input is IValidUserInput => {
     return false;
   }
 
-  if (input.bill < 0) {
+  if (input.bill <= 0) {
     return false;
   }
 
