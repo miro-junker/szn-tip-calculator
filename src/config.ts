@@ -1,5 +1,5 @@
 import t from './translations';
-import { TSatisfactionOption, TCalcSettings } from './types'
+import { TSatisfactionOption, TCalcSettings, TSatisfaction } from './types'
 
 export const CURRENCY = 'CZK';
 
@@ -22,3 +22,5 @@ export const satisfactionOptions: TSatisfactionOption[] = [
     'label': t.option[15],
   },
 ];
+
+export const DEFAULT_SATISFACTION: TSatisfaction = 10;

@@ -23,7 +23,7 @@ export interface IUserInputUpdate {
 export interface IState {
   userInput: IUserInput;
   result: IResult | null;
-  higlightMissing: boolean;
+  highlightMissing: boolean;
 }
 
 export interface IResult {

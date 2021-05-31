@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { satisfactionOptions, calcSettings, CURRENCY } from '../../config';
+import { satisfactionOptions, calcSettings, CURRENCY, DEFAULT_SATISFACTION } from '../../config';
 import { isUserInputValid, getTipAmount, createResult } from '../../utils';
 import t from '../../translations';
 import styles from './TipCalculator.module.scss';
@@ -12,15 +12,15 @@ const TipCalculator: React.FC = () => {
     userInput: {
       bill: 0,
       consumers: 1,
-      tipPercent: null,
+      tipPercent: DEFAULT_SATISFACTION,
     },
     result: null,
-    higlightMissing: false,
+    highlightMissing: false,
   });
 
   const changeUserInput = (commit: IUserInputUpdate) => {
     const userInput = {...state.userInput, ...commit};
-
+    
     const result = !isUserInputValid(userInput) ? null : createResult(
       userInput.bill,
       userInput.consumers,
@@ -28,7 +28,9 @@ const TipCalculator: React.FC = () => {
       CURRENCY,
     );
 
-    setState({...state, userInput, result})
+    const highlightMissing = !result;
+
+    setState({...state, userInput, result, highlightMissing})
   }
 
   const submit = () => {
@@ -48,6 +50,7 @@ const TipCalculator: React.FC = () => {
               updateValueCb={(updatedValue: TBill) => {
                 changeUserInput({bill: updatedValue})
               }}
+              highlightMissing={state.highlightMissing}
             />
 
             <h3 className={styles.subheading}>{t.satisfaction}</h3>

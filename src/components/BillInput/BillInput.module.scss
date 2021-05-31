@@ -1,0 +1,17 @@
+$color-error: #c00;
+
+.error {
+  border-color: #{$color-error} !important;
+}
+
+.hint {
+  color: $color-error;
+  margin-top: 5px;
+  height: 0;
+  transition: .4s height;
+  overflow: hidden;
+}
+
+.visible {
+  height: 1.3em;
+}
