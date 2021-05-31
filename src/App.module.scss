@@ -1,3 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 .root {
-  padding: 40px;
+  padding: 20px;
+
+}
+
+@media (min-width: 400px) {
+  .root {
+    padding: 40px;
+  }
 }

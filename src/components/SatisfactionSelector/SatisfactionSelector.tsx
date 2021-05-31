@@ -1,5 +1,6 @@
 import React from 'react';
 import { TSatisfaction, TSatisfactionOption } from '../../types';
+import styles from './SatisfactionSelector.module.scss';
 
 interface ISatisfactionSelector {
   value: TSatisfaction | null;
@@ -11,7 +12,7 @@ const SatisfactionSelector: React.FC<ISatisfactionSelector> = (props) => {
   return (
     <div>
       {props.satisfactionOptions.map((option) => (
-        <div key={option.value}>
+        <div className={styles.option} key={option.value}>
           <input
             type='radio'
             name='satisfaction'

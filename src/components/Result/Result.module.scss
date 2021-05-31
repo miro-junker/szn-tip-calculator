@@ -1,9 +1,3 @@
-.root {
-  //display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .total {
   margin-top: 0;
   flex-grow: 1;
@@ -11,6 +5,7 @@
 
 .consumer {
   display: block;
+  width: 100%;
   margin-top: 60px;
   text-align: center;
   background-color: #ebebeb;
@@ -26,4 +21,13 @@
   p {
     margin-bottom: 0;
   }
+}
+
+.overpay {
+  white-space: nowrap;
+  color: #b9b9b9;
+}
+
+.price {
+  white-space: nowrap;
 }
